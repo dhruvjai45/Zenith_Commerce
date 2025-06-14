@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_details_reviews",
+  "info": {
+    "displayName": "review"
+  },
+  "options": {},
+  "attributes": {
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "rating": {
+      "type": "integer",
+      "min": 1,
+      "max": 5
+    },
+    "comment": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

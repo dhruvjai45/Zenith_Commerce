@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_details_inventory_details",
+  "info": {
+    "displayName": "inventory_details"
+  },
+  "options": {},
+  "attributes": {
+    "slug": {
+      "type": "string"
+    },
+    "track_order": {
+      "type": "boolean"
+    },
+    "stock_status": {
+      "type": "enumeration",
+      "enum": [
+        "In stock",
+        "Out of stock",
+        "Backorder"
+      ]
+    },
+    "is_threshold_needed": {
+      "type": "boolean",
+      "default": true
+    },
+    "low_stock_threshold": {
+      "type": "integer"
+    },
+    "stock_count": {
+      "type": "integer"
+    }
+  },
+  "config": {}
+}

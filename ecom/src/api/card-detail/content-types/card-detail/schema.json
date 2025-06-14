@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "card_details",
+  "info": {
+    "singularName": "card-detail",
+    "pluralName": "card-details",
+    "displayName": "card_detail"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "card_holder_name": {
+      "type": "string"
+    },
+    "card_number": {
+      "type": "integer"
+    },
+    "expired_date": {
+      "type": "date"
+    },
+    "CVV": {
+      "type": "password"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

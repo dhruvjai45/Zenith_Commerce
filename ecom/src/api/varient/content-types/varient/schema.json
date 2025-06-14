@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "varients",
+  "info": {
+    "singularName": "varient",
+    "pluralName": "varients",
+    "displayName": "varient"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "varient_name": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "general_details": {
+      "type": "component",
+      "component": "details.general-details",
+      "repeatable": false
+    },
+    "shipping_details": {
+      "type": "component",
+      "component": "details.shipping-details",
+      "repeatable": true
+    },
+    "varient_description": {
+      "type": "text"
+    },
+    "image_details": {
+      "type": "component",
+      "component": "details.image-details",
+      "repeatable": false
+    },
+    "is_default": {
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "notification_managements",
+  "info": {
+    "singularName": "notification-management",
+    "pluralName": "notification-managements",
+    "displayName": "notification_management"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "info",
+        "warning",
+        "error",
+        "success",
+        "custom"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "message": {
+      "type": "text"
+    },
+    "is_read": {
+      "type": "boolean"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

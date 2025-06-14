@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_details_image_details",
+  "info": {
+    "displayName": "image_details"
+  },
+  "options": {},
+  "attributes": {
+    "main_image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "gallery_image": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  },
+  "config": {}
+}

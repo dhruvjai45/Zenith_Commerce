@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "help_and_supports",
+  "info": {
+    "singularName": "help-and-support",
+    "pluralName": "help-and-supports",
+    "displayName": "help_and_support"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "description": {
+      "type": "text"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "contact",
+        "career",
+        "event",
+        "other"
+      ]
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "email_notifies",
+  "info": {
+    "singularName": "email-notify",
+    "pluralName": "email-notifies",
+    "displayName": "email_notify"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "event_type": {
+      "type": "enumeration",
+      "enum": [
+        "order placed",
+        "order shipped",
+        "order detail",
+        "order cancelled",
+        "user login",
+        "password reset",
+        "account created",
+        "payment failed",
+        "other"
+      ]
+    },
+    "description": {
+      "type": "text"
+    },
+    "user_email": {
+      "type": "email"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

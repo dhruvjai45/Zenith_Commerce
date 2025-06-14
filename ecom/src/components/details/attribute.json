@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_details_attributes",
+  "info": {
+    "displayName": "attribute"
+  },
+  "options": {},
+  "attributes": {
+    "attribute_name": {
+      "type": "string"
+    },
+    "values": {
+      "type": "component",
+      "component": "details.attributes-values",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

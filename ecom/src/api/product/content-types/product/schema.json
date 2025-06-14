@@ -1,0 +1,79 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "product"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "short_description": {
+      "type": "text"
+    },
+    "product_type": {
+      "type": "enumeration",
+      "enum": [
+        "Simple product",
+        "Grouped product",
+        "External / Affiliate product",
+        "Variable product"
+      ]
+    },
+    "category": {
+      "type": "component",
+      "component": "details.categories",
+      "repeatable": true
+    },
+    "tag": {
+      "type": "component",
+      "component": "details.tags",
+      "repeatable": true
+    },
+    "general_details": {
+      "type": "component",
+      "component": "details.general-details",
+      "repeatable": false
+    },
+    "shipping_details": {
+      "type": "component",
+      "component": "details.shipping-details",
+      "repeatable": false
+    },
+    "image_details": {
+      "type": "component",
+      "component": "details.image-details",
+      "repeatable": false
+    },
+    "review_on": {
+      "type": "boolean"
+    },
+    "product_reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product-review.product-review"
+    },
+    "attributes": {
+      "type": "component",
+      "component": "details.attribute",
+      "repeatable": true
+    },
+    "varients": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::varient.varient"
+    }
+  }
+}

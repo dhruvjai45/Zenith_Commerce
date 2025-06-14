@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_details_attributes_values",
+  "info": {
+    "displayName": "attributes_values"
+  },
+  "options": {},
+  "attributes": {
+    "value": {
+      "type": "string"
+    },
+    "is_visible": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "config": {}
+}

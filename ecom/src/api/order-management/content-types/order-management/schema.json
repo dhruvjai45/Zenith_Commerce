@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "order_managements",
+  "info": {
+    "singularName": "order-management",
+    "pluralName": "order-managements",
+    "displayName": "order_management"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "coupon_code": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::coupon-code.coupon-code"
+    },
+    "gift_card": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::gift-card.gift-card"
+    },
+    "item_list": {
+      "type": "component",
+      "component": "details.item-list",
+      "repeatable": true
+    },
+    "is_shipping_rate": {
+      "type": "boolean"
+    },
+    "shipping_price": {
+      "type": "decimal"
+    },
+    "total_price": {
+      "type": "decimal"
+    },
+    "total_tax": {
+      "type": "decimal"
+    },
+    "total_to_pay": {
+      "type": "decimal"
+    },
+    "shipping_details": {
+      "type": "component",
+      "component": "address.delivery-address",
+      "repeatable": false
+    }
+  }
+}

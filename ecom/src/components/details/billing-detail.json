@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_details_billing_details",
+  "info": {
+    "displayName": "billing_detail"
+  },
+  "options": {},
+  "attributes": {
+    "SGST": {
+      "type": "integer"
+    },
+    "IGST": {
+      "type": "integer"
+    },
+    "CGST": {
+      "type": "integer"
+    },
+    "coupon_code": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::coupon-code.coupon-code"
+    },
+    "sku": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "integer"
+    },
+    "HSN": {
+      "type": "string"
+    },
+    "price": {
+      "type": "decimal"
+    }
+  },
+  "config": {}
+}

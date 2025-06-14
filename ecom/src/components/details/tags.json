@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_details_tags",
+  "info": {
+    "displayName": "tags",
+    "icon": "book"
+  },
+  "options": {},
+  "attributes": {
+    "tag_name": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

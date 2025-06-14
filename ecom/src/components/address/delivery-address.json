@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_address_delivery_addresses",
+  "info": {
+    "displayName": "delivery_address"
+  },
+  "options": {},
+  "attributes": {
+    "address_name": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "full_name": {
+      "type": "string"
+    },
+    "mobile_number": {
+      "type": "integer"
+    },
+    "flat_address": {
+      "type": "text"
+    },
+    "area_street": {
+      "type": "text"
+    },
+    "landmark": {
+      "type": "text"
+    },
+    "pincode": {
+      "type": "integer"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "default_address": {
+      "type": "boolean"
+    }
+  },
+  "config": {}
+}

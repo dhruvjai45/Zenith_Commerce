@@ -1,0 +1,57 @@
+{
+  "collectionName": "components_details_shipping_details",
+  "info": {
+    "displayName": "shipping_details"
+  },
+  "options": {},
+  "attributes": {
+    "needed": {
+      "type": "boolean"
+    },
+    "weight": {
+      "type": "decimal"
+    },
+    "weight_unit": {
+      "type": "enumeration",
+      "enum": [
+        "grams (g)",
+        "kilograms (kg)",
+        "ounces (oz)"
+      ]
+    },
+    "height": {
+      "type": "decimal"
+    },
+    "height_unit": {
+      "type": "enumeration",
+      "enum": [
+        "centimeters (cm)",
+        "meters (m)"
+      ]
+    },
+    "length": {
+      "type": "decimal"
+    },
+    "length_unit": {
+      "type": "enumeration",
+      "enum": [
+        "centimeters (cm)",
+        "millimeters (mm)",
+        "meters (m)"
+      ]
+    },
+    "breadth": {
+      "type": "decimal"
+    },
+    "breadth_unit": {
+      "type": "enumeration",
+      "enum": [
+        "centimeters (cm)"
+      ]
+    },
+    "shipping_description": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

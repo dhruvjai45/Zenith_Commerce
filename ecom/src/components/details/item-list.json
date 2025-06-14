@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_details_item_lists",
+  "info": {
+    "displayName": "item_list"
+  },
+  "options": {},
+  "attributes": {
+    "varients": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::varient.varient"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product"
+    },
+    "billing_detail": {
+      "type": "component",
+      "component": "details.billing-detail",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}
