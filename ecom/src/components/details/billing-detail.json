@@ -14,22 +14,8 @@
     "CGST": {
       "type": "integer"
     },
-    "coupon_code": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::coupon-code.coupon-code"
-    },
-    "sku": {
-      "type": "string"
-    },
-    "quantity": {
-      "type": "integer"
-    },
     "HSN": {
       "type": "string"
-    },
-    "price": {
-      "type": "decimal"
     }
   },
   "config": {}

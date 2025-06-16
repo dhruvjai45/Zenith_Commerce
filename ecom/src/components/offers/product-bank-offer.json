@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_offers_product_bank_offers",
+  "info": {
+    "displayName": "product_bank_offer"
+  },
+  "options": {},
+  "attributes": {
+    "scope": {
+      "type": "enumeration",
+      "enum": [
+        "product specific",
+        "cart level"
+      ]
+    },
+    "bank": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "decimal"
+    },
+    "offer_description": {
+      "type": "text"
+    },
+    "maximum_off": {
+      "type": "decimal"
+    },
+    "price_type": {
+      "type": "enumeration",
+      "enum": [
+        "fixed_discount",
+        "percentage_discount"
+      ]
+    },
+    "start_date": {
+      "type": "date"
+    },
+    "expired_date": {
+      "type": "date"
+    }
+  },
+  "config": {}
+}

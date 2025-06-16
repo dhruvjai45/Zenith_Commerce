@@ -5,20 +5,18 @@
   },
   "options": {},
   "attributes": {
-    "varients": {
+    "varient": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "oneToOne",
       "target": "api::varient.varient"
     },
-    "products": {
+    "product": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "oneToOne",
       "target": "api::product.product"
     },
-    "billing_detail": {
-      "type": "component",
-      "component": "details.billing-detail",
-      "repeatable": false
+    "quantity": {
+      "type": "integer"
     }
   },
   "config": {}

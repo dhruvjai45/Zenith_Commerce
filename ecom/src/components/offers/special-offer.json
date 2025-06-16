@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_offers_special_offers",
+  "info": {
+    "displayName": "coupon_special_price"
+  },
+  "options": {},
+  "attributes": {
+    "amount": {
+      "type": "decimal"
+    },
+    "offer_description": {
+      "type": "text"
+    },
+    "maximum_off": {
+      "type": "decimal"
+    },
+    "start_date": {
+      "type": "date"
+    },
+    "expired_date": {
+      "type": "date"
+    }
+  },
+  "config": {}
+}

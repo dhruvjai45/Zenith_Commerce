@@ -11,43 +11,14 @@
     "weight": {
       "type": "decimal"
     },
-    "weight_unit": {
-      "type": "enumeration",
-      "enum": [
-        "grams (g)",
-        "kilograms (kg)",
-        "ounces (oz)"
-      ]
-    },
     "height": {
       "type": "decimal"
     },
-    "height_unit": {
-      "type": "enumeration",
-      "enum": [
-        "centimeters (cm)",
-        "meters (m)"
-      ]
-    },
-    "length": {
+    "width": {
       "type": "decimal"
     },
-    "length_unit": {
-      "type": "enumeration",
-      "enum": [
-        "centimeters (cm)",
-        "millimeters (mm)",
-        "meters (m)"
-      ]
-    },
-    "breadth": {
+    "depth": {
       "type": "decimal"
-    },
-    "breadth_unit": {
-      "type": "enumeration",
-      "enum": [
-        "centimeters (cm)"
-      ]
     },
     "shipping_description": {
       "type": "text"

@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_offers_special_prices",
+  "info": {
+    "displayName": "special_price"
+  },
+  "options": {},
+  "attributes": {
+    "amount": {
+      "type": "decimal"
+    },
+    "description": {
+      "type": "text"
+    },
+    "price_type": {
+      "type": "enumeration",
+      "enum": [
+        "fixed_discount",
+        "percentage_discount"
+      ]
+    },
+    "start_date": {
+      "type": "date"
+    },
+    "expired_date": {
+      "type": "date"
+    }
+  },
+  "config": {}
+}

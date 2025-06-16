@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_offers",
+  "info": {
+    "singularName": "product-offer",
+    "pluralName": "product-offers",
+    "displayName": "product_offer"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "products": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product"
+    },
+    "type_of_offer": {
+      "type": "dynamiczone",
+      "components": [
+        "offers.coupon-offer",
+        "offers.special-price",
+        "offers.product-bank-offer"
+      ]
+    }
+  }
+}

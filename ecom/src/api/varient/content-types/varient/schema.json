@@ -17,11 +17,6 @@
     "slug": {
       "type": "string"
     },
-    "general_details": {
-      "type": "component",
-      "component": "details.general-details",
-      "repeatable": false
-    },
     "shipping_details": {
       "type": "component",
       "component": "details.shipping-details",
@@ -37,6 +32,17 @@
     },
     "is_default": {
       "type": "boolean"
+    },
+    "tax_details": {
+      "type": "component",
+      "component": "details.billing-detail",
+      "repeatable": false
+    },
+    "total_tax": {
+      "type": "decimal"
+    },
+    "product_price": {
+      "type": "decimal"
     }
   }
 }

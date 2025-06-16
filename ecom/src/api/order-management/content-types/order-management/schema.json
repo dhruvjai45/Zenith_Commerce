@@ -16,20 +16,28 @@
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
     },
-    "coupon_code": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::coupon-code.coupon-code"
+    "gift_card_code": {
+      "type": "string"
     },
-    "gift_card": {
+    "order_coupons": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::gift-card.gift-card"
+      "relation": "oneToMany",
+      "target": "api::order-coupon.order-coupon"
     },
-    "item_list": {
-      "type": "component",
-      "component": "details.item-list",
-      "repeatable": true
+    "order_bank_offers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::order-bank-offer.order-bank-offer"
+    },
+    "single_product_order": {
+      "type": "dynamiczone",
+      "components": [
+        "details.item-list",
+        "cart-order.cart-order"
+      ]
+    },
+    "total_product_price": {
+      "type": "decimal"
     },
     "is_shipping_rate": {
       "type": "boolean"
@@ -37,19 +45,13 @@
     "shipping_price": {
       "type": "decimal"
     },
-    "total_price": {
-      "type": "decimal"
-    },
-    "total_tax": {
-      "type": "decimal"
-    },
-    "total_to_pay": {
-      "type": "decimal"
-    },
     "shipping_details": {
       "type": "component",
       "component": "address.delivery-address",
       "repeatable": false
+    },
+    "total_to_pay": {
+      "type": "decimal"
     }
   }
 }

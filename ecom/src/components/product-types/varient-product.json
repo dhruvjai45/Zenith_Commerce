@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_product_types_varient_products",
+  "info": {
+    "displayName": "varient_product"
+  },
+  "options": {},
+  "attributes": {
+    "attributes": {
+      "type": "component",
+      "component": "details.attribute",
+      "repeatable": true
+    },
+    "varients": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::varient.varient"
+    }
+  },
+  "config": {}
+}

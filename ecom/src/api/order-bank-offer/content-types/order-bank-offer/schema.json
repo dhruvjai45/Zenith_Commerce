@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "order_bank_offers",
+  "info": {
+    "singularName": "order-bank-offer",
+    "pluralName": "order-bank-offers",
+    "displayName": "order_bank_offer"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "bank": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "decimal"
+    },
+    "offer_description": {
+      "type": "text"
+    },
+    "maximum_off": {
+      "type": "decimal"
+    },
+    "price_type": {
+      "type": "enumeration",
+      "enum": [
+        "fixed discount",
+        "percentage discount"
+      ]
+    },
+    "start_date": {
+      "type": "date"
+    },
+    "expired_date": {
+      "type": "date"
+    }
+  }
+}

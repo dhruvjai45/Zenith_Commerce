@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_offers_partner_offers",
+  "info": {
+    "displayName": "partner_offer"
+  },
+  "options": {},
+  "attributes": {
+    "amount": {
+      "type": "decimal"
+    },
+    "offer_description": {
+      "type": "text"
+    },
+    "maximum_off": {
+      "type": "decimal"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product"
+    },
+    "start_date": {
+      "type": "date"
+    },
+    "expired_date": {
+      "type": "date"
+    }
+  },
+  "config": {}
+}

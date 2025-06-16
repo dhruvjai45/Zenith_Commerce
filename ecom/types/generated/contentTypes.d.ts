@@ -408,41 +408,33 @@ export interface ApiCardDetailCardDetail extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiCouponCodeCouponCode extends Struct.CollectionTypeSchema {
-  collectionName: 'coupon_codes';
+export interface ApiCartCart extends Struct.CollectionTypeSchema {
+  collectionName: 'carts';
   info: {
-    displayName: 'coupon_code';
-    pluralName: 'coupon-codes';
-    singularName: 'coupon-code';
+    displayName: 'cart';
+    pluralName: 'carts';
+    singularName: 'cart';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    amount: Schema.Attribute.Integer;
-    code: Schema.Attribute.String & Schema.Attribute.Unique;
-    coupon_detail: Schema.Attribute.Text;
-    coupon_name: Schema.Attribute.String;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    expired_date: Schema.Attribute.Date;
-    is_valid: Schema.Attribute.Boolean;
+    item: Schema.Attribute.Component<'details.item-list', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::coupon-code.coupon-code'
-    > &
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::cart.cart'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    start_date: Schema.Attribute.Date;
-    type: Schema.Attribute.Enumeration<
-      ['percentage', 'fixed_amount', 'free_shipping']
-    >;
+    total_product_price: Schema.Attribute.Decimal;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    usuage_count: Schema.Attribute.Integer;
+    users_permissions_user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
   };
 }
 
@@ -489,43 +481,6 @@ export interface ApiEmailNotifyEmailNotify extends Struct.CollectionTypeSchema {
       'oneToOne',
       'plugin::users-permissions.user'
     >;
-  };
-}
-
-export interface ApiGiftCardGiftCard extends Struct.CollectionTypeSchema {
-  collectionName: 'gift_cards';
-  info: {
-    displayName: 'gift_card';
-    pluralName: 'gift-cards';
-    singularName: 'gift-card';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    code: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    current_balance: Schema.Attribute.Integer;
-    expired_date: Schema.Attribute.Date;
-    gift_card_name: Schema.Attribute.String;
-    initial_balance: Schema.Attribute.Decimal;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::gift-card.gift-card'
-    > &
-      Schema.Attribute.Private;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    users_permissions_user: Schema.Attribute.Relation<
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
-    valid: Schema.Attribute.Boolean;
   };
 }
 
@@ -607,6 +562,80 @@ export interface ApiNotificationManagementNotificationManagement
   };
 }
 
+export interface ApiOrderBankOfferOrderBankOffer
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'order_bank_offers';
+  info: {
+    displayName: 'order_bank_offer';
+    pluralName: 'order-bank-offers';
+    singularName: 'order-bank-offer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    amount: Schema.Attribute.Decimal;
+    bank: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    expired_date: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::order-bank-offer.order-bank-offer'
+    > &
+      Schema.Attribute.Private;
+    maximum_off: Schema.Attribute.Decimal;
+    offer_description: Schema.Attribute.Text;
+    price_type: Schema.Attribute.Enumeration<
+      ['fixed discount', 'percentage discount']
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    start_date: Schema.Attribute.Date;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiOrderCouponOrderCoupon extends Struct.CollectionTypeSchema {
+  collectionName: 'order_coupons';
+  info: {
+    displayName: 'order_coupon';
+    pluralName: 'order-coupons';
+    singularName: 'order-coupon';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    code: Schema.Attribute.String;
+    coupon_detail: Schema.Attribute.Text;
+    coupon_name: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    expire_date: Schema.Attribute.Date;
+    for_specific_user: Schema.Attribute.Boolean;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::order-coupon.order-coupon'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    start_date: Schema.Attribute.Date;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    users_permissions_user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
 export interface ApiOrderManagementOrderManagement
   extends Struct.CollectionTypeSchema {
   collectionName: 'order_managements';
@@ -619,33 +648,35 @@ export interface ApiOrderManagementOrderManagement
     draftAndPublish: true;
   };
   attributes: {
-    coupon_code: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::coupon-code.coupon-code'
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    gift_card: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::gift-card.gift-card'
-    >;
+    gift_card_code: Schema.Attribute.String;
     is_shipping_rate: Schema.Attribute.Boolean;
-    item_list: Schema.Attribute.Component<'details.item-list', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::order-management.order-management'
     > &
       Schema.Attribute.Private;
+    order_bank_offers: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::order-bank-offer.order-bank-offer'
+    >;
+    order_coupons: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::order-coupon.order-coupon'
+    >;
     publishedAt: Schema.Attribute.DateTime;
     shipping_details: Schema.Attribute.Component<
       'address.delivery-address',
       false
     >;
     shipping_price: Schema.Attribute.Decimal;
-    total_price: Schema.Attribute.Decimal;
-    total_tax: Schema.Attribute.Decimal;
+    single_product_order: Schema.Attribute.DynamicZone<
+      ['details.item-list', 'cart-order.cart-order']
+    >;
+    total_product_price: Schema.Attribute.Decimal;
     total_to_pay: Schema.Attribute.Decimal;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -654,6 +685,72 @@ export interface ApiOrderManagementOrderManagement
       'oneToOne',
       'plugin::users-permissions.user'
     >;
+  };
+}
+
+export interface ApiProductCategoryProductCategory
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'product_categories';
+  info: {
+    displayName: 'product_category';
+    pluralName: 'product-categories';
+    singularName: 'product-category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    category_name: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::product-category.product-category'
+    > &
+      Schema.Attribute.Private;
+    products: Schema.Attribute.Relation<'manyToMany', 'api::product.product'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiProductOfferProductOffer
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'product_offers';
+  info: {
+    displayName: 'product_offer';
+    pluralName: 'product-offers';
+    singularName: 'product-offer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::product-offer.product-offer'
+    > &
+      Schema.Attribute.Private;
+    products: Schema.Attribute.Relation<'oneToOne', 'api::product.product'>;
+    publishedAt: Schema.Attribute.DateTime;
+    type_of_offer: Schema.Attribute.DynamicZone<
+      [
+        'offers.coupon-offer',
+        'offers.special-price',
+        'offers.product-bank-offer',
+      ]
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -709,17 +806,10 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    attributes: Schema.Attribute.Component<'details.attribute', true>;
-    category: Schema.Attribute.Component<'details.categories', true>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
-    general_details: Schema.Attribute.Component<
-      'details.general-details',
-      false
-    >;
-    image_details: Schema.Attribute.Component<'details.image-details', false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -727,31 +817,30 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
+    product_categories: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::product-category.product-category'
+    >;
     product_reviews: Schema.Attribute.Relation<
       'oneToMany',
       'api::product-review.product-review'
     >;
-    product_type: Schema.Attribute.Enumeration<
+    product_type: Schema.Attribute.DynamicZone<
       [
-        'Simple product',
-        'Grouped product',
-        'External / Affiliate product',
-        'Variable product',
+        'product-types.simple-product',
+        'product-types.varient-product',
+        'product-types.grouped-product',
+        'product-types.affiliate-product',
       ]
     >;
     publishedAt: Schema.Attribute.DateTime;
     review_on: Schema.Attribute.Boolean;
-    shipping_details: Schema.Attribute.Component<
-      'details.shipping-details',
-      false
-    >;
     short_description: Schema.Attribute.Text;
     slug: Schema.Attribute.String;
     tag: Schema.Attribute.Component<'details.tags', true>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    varients: Schema.Attribute.Relation<'oneToMany', 'api::varient.varient'>;
   };
 }
 
@@ -769,10 +858,6 @@ export interface ApiVarientVarient extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    general_details: Schema.Attribute.Component<
-      'details.general-details',
-      false
-    >;
     image_details: Schema.Attribute.Component<'details.image-details', false>;
     is_default: Schema.Attribute.Boolean;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -781,12 +866,15 @@ export interface ApiVarientVarient extends Struct.CollectionTypeSchema {
       'api::varient.varient'
     > &
       Schema.Attribute.Private;
+    product_price: Schema.Attribute.Decimal;
     publishedAt: Schema.Attribute.DateTime;
     shipping_details: Schema.Attribute.Component<
       'details.shipping-details',
       true
     >;
     slug: Schema.Attribute.String;
+    tax_details: Schema.Attribute.Component<'details.billing-detail', false>;
+    total_tax: Schema.Attribute.Decimal;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -829,6 +917,36 @@ export interface ApiWebNotificationWebNotification
       'oneToOne',
       'plugin::users-permissions.user'
     >;
+  };
+}
+
+export interface ApiWishlistWishlist extends Struct.CollectionTypeSchema {
+  collectionName: 'wishlists';
+  info: {
+    displayName: 'wishlist';
+    pluralName: 'wishlists';
+    singularName: 'wishlist';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::wishlist.wishlist'
+    > &
+      Schema.Attribute.Private;
+    products: Schema.Attribute.Relation<'oneToMany', 'api::product.product'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    varients: Schema.Attribute.Relation<'oneToMany', 'api::varient.varient'>;
+    wishlist_name: Schema.Attribute.String;
   };
 }
 
@@ -1300,6 +1418,11 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
+    gift_card_details: Schema.Attribute.Component<
+      'details.gift-card-details',
+      true
+    >;
+    is_gift_card: Schema.Attribute.Boolean;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1342,16 +1465,20 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::card-detail.card-detail': ApiCardDetailCardDetail;
-      'api::coupon-code.coupon-code': ApiCouponCodeCouponCode;
+      'api::cart.cart': ApiCartCart;
       'api::email-notify.email-notify': ApiEmailNotifyEmailNotify;
-      'api::gift-card.gift-card': ApiGiftCardGiftCard;
       'api::help-and-support.help-and-support': ApiHelpAndSupportHelpAndSupport;
       'api::notification-management.notification-management': ApiNotificationManagementNotificationManagement;
+      'api::order-bank-offer.order-bank-offer': ApiOrderBankOfferOrderBankOffer;
+      'api::order-coupon.order-coupon': ApiOrderCouponOrderCoupon;
       'api::order-management.order-management': ApiOrderManagementOrderManagement;
+      'api::product-category.product-category': ApiProductCategoryProductCategory;
+      'api::product-offer.product-offer': ApiProductOfferProductOffer;
       'api::product-review.product-review': ApiProductReviewProductReview;
       'api::product.product': ApiProductProduct;
       'api::varient.varient': ApiVarientVarient;
       'api::web-notification.web-notification': ApiWebNotificationWebNotification;
+      'api::wishlist.wishlist': ApiWishlistWishlist;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

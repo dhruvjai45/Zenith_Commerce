@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_offers_coupon_offers",
+  "info": {
+    "displayName": "coupon_offer"
+  },
+  "options": {},
+  "attributes": {
+    "coupon_name": {
+      "type": "string"
+    },
+    "price_type": {
+      "type": "enumeration",
+      "enum": [
+        "fixed_discount",
+        "percentage_discount"
+      ]
+    },
+    "offer_type": {
+      "type": "enumeration",
+      "enum": [
+        "special_offer",
+        "partner_offer"
+      ]
+    },
+    "special_offer": {
+      "type": "component",
+      "component": "offers.special-offer",
+      "repeatable": false
+    },
+    "partner_offer": {
+      "type": "component",
+      "component": "offers.partner-offer",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

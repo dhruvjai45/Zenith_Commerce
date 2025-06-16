@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_product_types_affiliate_products",
+  "info": {
+    "displayName": "affiliate_product"
+  },
+  "options": {},
+  "attributes": {
+    "external_url": {
+      "type": "string"
+    },
+    "affiliate_tracking_code": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

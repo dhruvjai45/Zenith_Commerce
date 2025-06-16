@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "order_coupons",
+  "info": {
+    "singularName": "order-coupon",
+    "pluralName": "order-coupons",
+    "displayName": "order_coupon"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "coupon_name": {
+      "type": "string"
+    },
+    "code": {
+      "type": "string"
+    },
+    "start_date": {
+      "type": "date"
+    },
+    "expire_date": {
+      "type": "date"
+    },
+    "coupon_detail": {
+      "type": "text"
+    },
+    "for_specific_user": {
+      "type": "boolean"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_details_gift_card_details",
+  "info": {
+    "displayName": "gift_card_details"
+  },
+  "options": {},
+  "attributes": {
+    "code": {
+      "type": "string"
+    },
+    "gift_card_name": {
+      "type": "string"
+    },
+    "initial_balance": {
+      "type": "decimal"
+    },
+    "current_balance": {
+      "type": "string"
+    },
+    "is_valid": {
+      "type": "boolean"
+    }
+  },
+  "config": {}
+}

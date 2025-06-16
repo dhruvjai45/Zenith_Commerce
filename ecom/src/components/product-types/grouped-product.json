@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_product_types_grouped_products",
+  "info": {
+    "displayName": "grouped_product"
+  },
+  "options": {},
+  "attributes": {
+    "quantity": {
+      "type": "integer"
+    },
+    "shipping_details": {
+      "type": "component",
+      "component": "details.shipping-details",
+      "repeatable": false
+    },
+    "image_details": {
+      "type": "component",
+      "component": "details.image-details",
+      "repeatable": false
+    },
+    "tax_details": {
+      "type": "component",
+      "component": "details.billing-detail",
+      "repeatable": false
+    },
+    "product_price": {
+      "type": "decimal"
+    },
+    "total_tax": {
+      "type": "decimal"
+    }
+  },
+  "config": {}
+}
