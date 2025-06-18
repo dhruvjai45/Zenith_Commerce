@@ -233,7 +233,6 @@ export interface ProductTypesAffiliateProduct extends Struct.ComponentSchema {
   attributes: {
     affiliate_tracking_code: Schema.Attribute.String;
     external_url: Schema.Attribute.String;
-    product_price: Schema.Attribute.Decimal;
   };
 }
 
