@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "gift_cards",
+  "info": {
+    "singularName": "gift-card",
+    "pluralName": "gift-cards",
+    "displayName": "gift_card"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "is_gift_card": {
+      "type": "boolean"
+    },
+    "gift_card_details": {
+      "type": "component",
+      "component": "details.gift-card-details",
+      "repeatable": true
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

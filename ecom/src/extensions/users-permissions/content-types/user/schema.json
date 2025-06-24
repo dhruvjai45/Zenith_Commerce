@@ -65,19 +65,6 @@
       "target": "plugin::users-permissions.role",
       "inversedBy": "users",
       "configurable": false
-    },
-    "user_address": {
-      "type": "component",
-      "component": "address.delivery-address",
-      "repeatable": true
-    },
-    "is_gift_card": {
-      "type": "boolean"
-    },
-    "gift_card_details": {
-      "type": "component",
-      "component": "details.gift-card-details",
-      "repeatable": true
     }
   }
 }

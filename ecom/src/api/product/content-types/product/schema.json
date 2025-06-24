@@ -37,11 +37,6 @@
     "review_on": {
       "type": "boolean"
     },
-    "product_reviews": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::product-review.product-review"
-    },
     "product_type": {
       "type": "dynamiczone",
       "components": [

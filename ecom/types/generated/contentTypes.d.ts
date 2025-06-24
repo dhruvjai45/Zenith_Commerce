@@ -484,6 +484,42 @@ export interface ApiEmailNotifyEmailNotify extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiGiftCardGiftCard extends Struct.CollectionTypeSchema {
+  collectionName: 'gift_cards';
+  info: {
+    displayName: 'gift_card';
+    pluralName: 'gift-cards';
+    singularName: 'gift-card';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    gift_card_details: Schema.Attribute.Component<
+      'details.gift-card-details',
+      true
+    >;
+    is_gift_card: Schema.Attribute.Boolean;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::gift-card.gift-card'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    users_permissions_user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+  };
+}
+
 export interface ApiHelpAndSupportHelpAndSupport
   extends Struct.CollectionTypeSchema {
   collectionName: 'help_and_supports';
@@ -668,19 +704,19 @@ export interface ApiOrderManagementOrderManagement
       'api::order-coupon.order-coupon'
     >;
     publishedAt: Schema.Attribute.DateTime;
-    shipping_details: Schema.Attribute.Component<
-      'address.delivery-address',
-      false
-    >;
     shipping_price: Schema.Attribute.Decimal;
-    single_product_order: Schema.Attribute.DynamicZone<
-      ['details.item-list', 'cart-order.cart-order']
-    >;
     total_product_price: Schema.Attribute.Decimal;
     total_to_pay: Schema.Attribute.Decimal;
+    type_of_order: Schema.Attribute.DynamicZone<
+      ['details.item-list', 'cart-order.cart-order']
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    user_address: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::user-address.user-address'
+    >;
     users_permissions_user: Schema.Attribute.Relation<
       'oneToOne',
       'plugin::users-permissions.user'
@@ -776,6 +812,7 @@ export interface ApiProductReviewProductReview
       'api::product-review.product-review'
     > &
       Schema.Attribute.Private;
+    products: Schema.Attribute.Relation<'manyToOne', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
     rating: Schema.Attribute.Integer &
       Schema.Attribute.SetMinMax<
@@ -785,6 +822,10 @@ export interface ApiProductReviewProductReview
         },
         number
       >;
+    review_image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -821,10 +862,6 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::product-category.product-category'
     >;
-    product_reviews: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::product-review.product-review'
-    >;
     product_type: Schema.Attribute.DynamicZone<
       [
         'product-types.simple-product',
@@ -841,6 +878,38 @@ export interface ApiProductProduct extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiUserAddressUserAddress extends Struct.CollectionTypeSchema {
+  collectionName: 'user_addresses';
+  info: {
+    displayName: 'user_address';
+    pluralName: 'user-addresses';
+    singularName: 'user-address';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    address: Schema.Attribute.Component<'address.delivery-address', true>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::user-address.user-address'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    users_permissions_user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
   };
 }
 
@@ -945,6 +1014,10 @@ export interface ApiWishlistWishlist extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    users_permissions_user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
     varients: Schema.Attribute.Relation<'oneToMany', 'api::varient.varient'>;
     wishlist_name: Schema.Attribute.String;
   };
@@ -1418,11 +1491,6 @@ export interface PluginUsersPermissionsUser
       Schema.Attribute.SetMinMaxLength<{
         minLength: 6;
       }>;
-    gift_card_details: Schema.Attribute.Component<
-      'details.gift-card-details',
-      true
-    >;
-    is_gift_card: Schema.Attribute.Boolean;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1444,7 +1512,6 @@ export interface PluginUsersPermissionsUser
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    user_address: Schema.Attribute.Component<'address.delivery-address', true>;
     username: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -1467,6 +1534,7 @@ declare module '@strapi/strapi' {
       'api::card-detail.card-detail': ApiCardDetailCardDetail;
       'api::cart.cart': ApiCartCart;
       'api::email-notify.email-notify': ApiEmailNotifyEmailNotify;
+      'api::gift-card.gift-card': ApiGiftCardGiftCard;
       'api::help-and-support.help-and-support': ApiHelpAndSupportHelpAndSupport;
       'api::notification-management.notification-management': ApiNotificationManagementNotificationManagement;
       'api::order-bank-offer.order-bank-offer': ApiOrderBankOfferOrderBankOffer;
@@ -1476,6 +1544,7 @@ declare module '@strapi/strapi' {
       'api::product-offer.product-offer': ApiProductOfferProductOffer;
       'api::product-review.product-review': ApiProductReviewProductReview;
       'api::product.product': ApiProductProduct;
+      'api::user-address.user-address': ApiUserAddressUserAddress;
       'api::varient.varient': ApiVarientVarient;
       'api::web-notification.web-notification': ApiWebNotificationWebNotification;
       'api::wishlist.wishlist': ApiWishlistWishlist;

@@ -23,6 +23,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::varient.varient"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     }
   }
 }

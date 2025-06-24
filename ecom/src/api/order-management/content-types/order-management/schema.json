@@ -29,7 +29,7 @@
       "relation": "oneToMany",
       "target": "api::order-bank-offer.order-bank-offer"
     },
-    "single_product_order": {
+    "type_of_order": {
       "type": "dynamiczone",
       "components": [
         "details.item-list",
@@ -45,13 +45,13 @@
     "shipping_price": {
       "type": "decimal"
     },
-    "shipping_details": {
-      "type": "component",
-      "component": "address.delivery-address",
-      "repeatable": false
-    },
     "total_to_pay": {
       "type": "decimal"
+    },
+    "user_address": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::user-address.user-address"
     }
   }
 }
