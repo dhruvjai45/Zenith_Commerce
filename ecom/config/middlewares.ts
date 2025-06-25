@@ -1,17 +1,20 @@
-// config/middlewares.js
-module.exports = [
+// In your Strapi project: config/middlewares.ts
+
+export default [
   'strapi::logger',
   'strapi::errors',
   {
     name: 'strapi::cors',
     config: {
       enabled: true,
-      headers: ['Content-Type', 'Authorization', 'Accept', 'Origin'],
+      headers: '*',
+      // Ensure the origins array includes your Next.js app's URL
       origin: [
         'http://localhost:1337', // Strapi admin
-        'http://localhost:9002', // Next.js app
-        'http://127.0.0.1:9002', // Fallback for localhost
-        'https://cathedral-johns-representative-good.trycloudflare.com', // Strapi API
+        'http://localhost:9003', // Your Next.js app's local development URL
+        'http://127.0.0.1:9003', // Alternative for localhost
+        'https://studio.web.app', // For Firebase Studio environment
+        'https://*.trycloudflare.com', // To allow requests from your public preview URL
       ],
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
       keepHeaderOnError: true,
