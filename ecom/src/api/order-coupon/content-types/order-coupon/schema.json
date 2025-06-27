@@ -33,6 +33,9 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"
+    },
+    "number_of_use": {
+      "type": "integer"
     }
   }
 }

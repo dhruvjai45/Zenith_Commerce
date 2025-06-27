@@ -692,6 +692,7 @@ export interface ApiOrderCouponOrderCoupon extends Struct.CollectionTypeSchema {
       'api::order-coupon.order-coupon'
     > &
       Schema.Attribute.Private;
+    number_of_use: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
     start_date: Schema.Attribute.Date;
     updatedAt: Schema.Attribute.DateTime;
