@@ -560,6 +560,38 @@ export interface ApiHelpAndSupportHelpAndSupport
   };
 }
 
+export interface ApiHomeHome extends Struct.CollectionTypeSchema {
+  collectionName: 'homes';
+  info: {
+    displayName: 'Home';
+    pluralName: 'homes';
+    singularName: 'home';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bottom_image: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    Heading: Schema.Attribute.String;
+    image: Schema.Attribute.Component<'details.home-image', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::home.home'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Sub_heading: Schema.Attribute.String;
+    timer: Schema.Attribute.Integer;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiNotificationManagementNotificationManagement
   extends Struct.CollectionTypeSchema {
   collectionName: 'notification_managements';
@@ -748,6 +780,7 @@ export interface ApiProductCategoryProductCategory
       Schema.Attribute.Private;
     products: Schema.Attribute.Relation<'manyToMany', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
+    sub_category_name: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1536,6 +1569,7 @@ declare module '@strapi/strapi' {
       'api::email-notify.email-notify': ApiEmailNotifyEmailNotify;
       'api::gift-card.gift-card': ApiGiftCardGiftCard;
       'api::help-and-support.help-and-support': ApiHelpAndSupportHelpAndSupport;
+      'api::home.home': ApiHomeHome;
       'api::notification-management.notification-management': ApiNotificationManagementNotificationManagement;
       'api::order-bank-offer.order-bank-offer': ApiOrderBankOfferOrderBankOffer;
       'api::order-coupon.order-coupon': ApiOrderCouponOrderCoupon;

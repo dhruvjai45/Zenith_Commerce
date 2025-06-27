@@ -19,6 +19,9 @@
       "relation": "manyToMany",
       "target": "api::product.product",
       "inversedBy": "product_categories"
+    },
+    "sub_category_name": {
+      "type": "string"
     }
   }
 }

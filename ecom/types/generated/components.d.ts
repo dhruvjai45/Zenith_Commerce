@@ -89,6 +89,16 @@ export interface DetailsGiftCardDetails extends Struct.ComponentSchema {
   };
 }
 
+export interface DetailsHomeImage extends Struct.ComponentSchema {
+  collectionName: 'components_details_home_images';
+  info: {
+    displayName: 'home_image';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
 export interface DetailsImageDetails extends Struct.ComponentSchema {
   collectionName: 'components_details_image_details';
   info: {
@@ -292,6 +302,7 @@ declare module '@strapi/strapi' {
       'details.billing-detail': DetailsBillingDetail;
       'details.categories': DetailsCategories;
       'details.gift-card-details': DetailsGiftCardDetails;
+      'details.home-image': DetailsHomeImage;
       'details.image-details': DetailsImageDetails;
       'details.item-list': DetailsItemList;
       'details.shipping-details': DetailsShippingDetails;
