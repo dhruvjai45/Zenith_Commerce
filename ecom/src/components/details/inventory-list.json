@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_details_inventory_lists",
+  "info": {
+    "displayName": "inventory_list"
+  },
+  "options": {},
+  "attributes": {
+    "quantity": {
+      "type": "integer"
+    }
+  },
+  "config": {}
+}

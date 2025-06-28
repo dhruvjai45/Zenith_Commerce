@@ -115,6 +115,16 @@ export interface DetailsImageDetails extends Struct.ComponentSchema {
   };
 }
 
+export interface DetailsInventoryList extends Struct.ComponentSchema {
+  collectionName: 'components_details_inventory_lists';
+  info: {
+    displayName: 'inventory_list';
+  };
+  attributes: {
+    quantity: Schema.Attribute.Integer;
+  };
+}
+
 export interface DetailsItemList extends Struct.ComponentSchema {
   collectionName: 'components_details_item_lists';
   info: {
@@ -304,6 +314,7 @@ declare module '@strapi/strapi' {
       'details.gift-card-details': DetailsGiftCardDetails;
       'details.home-image': DetailsHomeImage;
       'details.image-details': DetailsImageDetails;
+      'details.inventory-list': DetailsInventoryList;
       'details.item-list': DetailsItemList;
       'details.shipping-details': DetailsShippingDetails;
       'details.tags': DetailsTags;

@@ -578,14 +578,49 @@ export interface ApiHomeHome extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text;
+    github_link: Schema.Attribute.String;
     Heading: Schema.Attribute.String;
     image: Schema.Attribute.Component<'details.home-image', true>;
+    linkdin_link: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::home.home'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     Sub_heading: Schema.Attribute.String;
     timer: Schema.Attribute.Integer;
+    twitter_link: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiInventoryInventory extends Struct.CollectionTypeSchema {
+  collectionName: 'inventories';
+  info: {
+    displayName: 'inventory';
+    pluralName: 'inventories';
+    singularName: 'inventory';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    inventory_address: Schema.Attribute.Component<
+      'address.delivery-address',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::inventory.inventory'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1571,6 +1606,7 @@ declare module '@strapi/strapi' {
       'api::gift-card.gift-card': ApiGiftCardGiftCard;
       'api::help-and-support.help-and-support': ApiHelpAndSupportHelpAndSupport;
       'api::home.home': ApiHomeHome;
+      'api::inventory.inventory': ApiInventoryInventory;
       'api::notification-management.notification-management': ApiNotificationManagementNotificationManagement;
       'api::order-bank-offer.order-bank-offer': ApiOrderBankOfferOrderBankOffer;
       'api::order-coupon.order-coupon': ApiOrderCouponOrderCoupon;

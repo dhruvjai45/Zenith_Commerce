@@ -37,6 +37,15 @@
         "videos",
         "audios"
       ]
+    },
+    "linkdin_link": {
+      "type": "string"
+    },
+    "github_link": {
+      "type": "string"
+    },
+    "twitter_link": {
+      "type": "string"
     }
   }
 }
