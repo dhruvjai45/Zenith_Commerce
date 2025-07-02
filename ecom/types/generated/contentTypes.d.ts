@@ -428,6 +428,7 @@ export interface ApiCartCart extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     total_product_price: Schema.Attribute.Decimal;
+    total_tax: Schema.Attribute.Integer;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -713,6 +714,7 @@ export interface ApiOrderCouponOrderCoupon extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    amount: Schema.Attribute.Integer;
     code: Schema.Attribute.String;
     coupon_detail: Schema.Attribute.Text;
     coupon_name: Schema.Attribute.String;
@@ -774,6 +776,7 @@ export interface ApiOrderManagementOrderManagement
     publishedAt: Schema.Attribute.DateTime;
     shipping_price: Schema.Attribute.Decimal;
     total_product_price: Schema.Attribute.Decimal;
+    total_tax: Schema.Attribute.Integer;
     total_to_pay: Schema.Attribute.Decimal;
     type_of_order: Schema.Attribute.DynamicZone<
       ['details.item-list', 'cart-order.cart-order']

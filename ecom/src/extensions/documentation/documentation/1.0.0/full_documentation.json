@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-06-29T13:04:53.469Z"
+    "x-generation-date": "2025-07-02T15:46:10.714Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -11880,6 +11880,9 @@
                 "type": "number",
                 "format": "float"
               },
+              "total_tax": {
+                "type": "integer"
+              },
               "locale": {
                 "type": "string"
               },
@@ -12455,6 +12458,9 @@
             "type": "number",
             "format": "float"
           },
+          "total_tax": {
+            "type": "integer"
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -12523,6 +12529,9 @@
                 "total_product_price": {
                   "type": "number",
                   "format": "float"
+                },
+                "total_tax": {
+                  "type": "integer"
                 },
                 "createdAt": {
                   "type": "string",
@@ -18516,6 +18525,9 @@
               "number_of_use": {
                 "type": "integer"
               },
+              "amount": {
+                "type": "integer"
+              },
               "locale": {
                 "type": "string"
               },
@@ -19104,6 +19116,9 @@
           "number_of_use": {
             "type": "integer"
           },
+          "amount": {
+            "type": "integer"
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -19184,6 +19199,9 @@
                   }
                 },
                 "number_of_use": {
+                  "type": "integer"
+                },
+                "amount": {
                   "type": "integer"
                 },
                 "createdAt": {
@@ -19349,6 +19367,9 @@
                   }
                 ],
                 "example": "string or id"
+              },
+              "total_tax": {
+                "type": "integer"
               },
               "locale": {
                 "type": "string"
@@ -19963,6 +19984,9 @@
                 "number_of_use": {
                   "type": "integer"
                 },
+                "amount": {
+                  "type": "integer"
+                },
                 "createdAt": {
                   "type": "string",
                   "format": "date-time"
@@ -20225,6 +20249,9 @@
               }
             }
           },
+          "total_tax": {
+            "type": "integer"
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -20360,6 +20387,9 @@
                       "type": "string"
                     }
                   }
+                },
+                "total_tax": {
+                  "type": "integer"
                 },
                 "createdAt": {
                   "type": "string",

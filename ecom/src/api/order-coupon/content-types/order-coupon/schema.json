@@ -36,6 +36,9 @@
     },
     "number_of_use": {
       "type": "integer"
+    },
+    "amount": {
+      "type": "integer"
     }
   }
 }

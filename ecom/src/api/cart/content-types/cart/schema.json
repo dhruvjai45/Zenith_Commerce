@@ -23,6 +23,9 @@
     },
     "total_product_price": {
       "type": "decimal"
+    },
+    "total_tax": {
+      "type": "integer"
     }
   }
 }
