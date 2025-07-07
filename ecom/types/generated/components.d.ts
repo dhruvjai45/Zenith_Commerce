@@ -20,6 +20,18 @@ export interface AddressDeliveryAddress extends Struct.ComponentSchema {
   };
 }
 
+export interface CartOrderCartList extends Struct.ComponentSchema {
+  collectionName: 'components_cart_order_cart_lists';
+  info: {
+    displayName: 'cart_list';
+  };
+  attributes: {
+    product: Schema.Attribute.Relation<'oneToOne', 'api::product.product'>;
+    quantity: Schema.Attribute.Integer;
+    varient: Schema.Attribute.Relation<'oneToOne', 'api::varient.varient'>;
+  };
+}
+
 export interface CartOrderCartOrder extends Struct.ComponentSchema {
   collectionName: 'components_cart_order_cart_orders';
   info: {
@@ -306,6 +318,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'address.delivery-address': AddressDeliveryAddress;
+      'cart-order.cart-list': CartOrderCartList;
       'cart-order.cart-order': CartOrderCartOrder;
       'details.attribute': DetailsAttribute;
       'details.attributes-values': DetailsAttributesValues;

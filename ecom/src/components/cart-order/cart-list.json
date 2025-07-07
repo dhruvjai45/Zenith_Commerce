@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_cart_order_cart_lists",
+  "info": {
+    "displayName": "cart_list"
+  },
+  "options": {},
+  "attributes": {
+    "quantity": {
+      "type": "integer"
+    },
+    "varient": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::varient.varient"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product"
+    }
+  },
+  "config": {}
+}

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-07-02T15:46:10.714Z"
+    "x-generation-date": "2025-07-07T12:06:57.942Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -11870,18 +11870,18 @@
                 ],
                 "example": "string or id"
               },
-              "item": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/DetailsItemListComponent"
-                }
-              },
               "total_product_price": {
                 "type": "number",
                 "format": "float"
               },
               "total_tax": {
                 "type": "integer"
+              },
+              "item": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DetailsItemListComponent"
+                }
               },
               "locale": {
                 "type": "string"
@@ -12448,18 +12448,18 @@
               }
             }
           },
-          "item": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/DetailsItemListComponent"
-            }
-          },
           "total_product_price": {
             "type": "number",
             "format": "float"
           },
           "total_tax": {
             "type": "integer"
+          },
+          "item": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DetailsItemListComponent"
+            }
           },
           "createdAt": {
             "type": "string",
@@ -12520,18 +12520,18 @@
                     }
                   }
                 },
-                "item": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/DetailsItemListComponent"
-                  }
-                },
                 "total_product_price": {
                   "type": "number",
                   "format": "float"
                 },
                 "total_tax": {
                   "type": "integer"
+                },
+                "item": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DetailsItemListComponent"
+                  }
                 },
                 "createdAt": {
                   "type": "string",
