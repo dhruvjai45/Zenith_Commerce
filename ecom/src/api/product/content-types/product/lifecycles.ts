@@ -1,33 +1,92 @@
-// Define a custom interface for the product entity to include product_type
+// Fallback type for Strapi's ID
+type ID = string | number;
+
+// Define type for entityService.update options to fix TS2339
+interface UpdateOptions {
+  data: {
+    product_type?: any[];
+    [key: string]: any;
+  };
+}
+
+// Interfaces based on provided schemas
+interface BillingDetail {
+  id: number;
+  SGST?: number;
+  IGST?: number;
+  CGST?: number;
+  HSN?: string;
+}
+
+interface ImageDetails {
+  id: number;
+  [key: string]: any; // Placeholder for details.image-details
+}
+
+interface ShippingDetails {
+  id: number;
+  needed?: boolean;
+  weight?: number;
+  height?: number;
+  width?: number;
+  depth?: number;
+  shipping_description?: string;
+}
+
+interface Varient {
+  id: number;
+  documentId: string;
+  varient_name: string;
+  slug: string;
+  varient_description?: string;
+  is_default?: boolean;
+  product_price?: number;
+  total_tax?: number;
+  tax_details?: BillingDetail;
+  image_details?: ImageDetails;
+  shipping_details?: ShippingDetails[];
+}
+
+interface Tag {
+  id: number;
+  tag_name: string;
+}
+
+interface ProductCategory {
+  id: number;
+  documentId: string;
+  category_name: string;
+  sub_category_name?: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt?: string;
+}
+
 interface Product {
-  id: string | number; // Allow both string and number to match Strapi's ID type
+  id: ID; // string | number to match Strapi's ID type
   documentId: string;
   name?: string;
   description?: string;
   slug?: string;
   short_description?: string;
   review_on?: boolean;
-  createdAt?: string | Date | null; // Allow string, Date, or null
-  updatedAt?: string | Date | null; // Allow string, Date, or null
-  publishedAt?: string | Date | null; // Allow string, Date, or null
+  createdAt?: string | Date | null;
+  updatedAt?: string | Date | null;
+  publishedAt?: string | Date | null;
   locale?: string | null;
+  product_categories?: ProductCategory[];
+  tag?: Tag[];
   product_type?: Array<{
     __component: 'product-types.simple-product' | 'product-types.grouped-product' | 'product-types.varient-product' | 'product-types.affiliate-product';
     id: number;
     product_price?: number;
     total_tax?: number;
-    tax_details?: {
-      id: number;
-      SGST?: number;
-      IGST?: number;
-      CGST?: number;
-      HSN?: string;
-    };
-    image_details?: any; // For simple-product, grouped-product
-    shipping_details?: any; // For simple-product, grouped-product
-    varients?: any; // For varient-product
-    affiliate_tracking_code?: string; // For affiliate-product
-    external_url?: string; // For affiliate-product
+    tax_details?: BillingDetail;
+    image_details?: ImageDetails;
+    shipping_details?: ShippingDetails;
+    varients?: Varient[];
+    affiliate_tracking_code?: string; // Optional, as schema is unclear
+    external_url?: string; // Optional, as schema is unclear
   }>;
 }
 
@@ -52,7 +111,7 @@ const calculateTotalTax = (component: any): number => {
 };
 
 export default {
-  async afterCreate(event: any) {
+  async afterCreate(event: { result: Product }) {
     try {
       const { result } = event;
       strapi.log.info(`afterCreate: Processing product result: ${JSON.stringify(result, null, 2)}`);
@@ -69,12 +128,14 @@ export default {
         populate: {
           product_type: {
             on: {
-              'product-types.simple-product': { populate: ['tax_details'] },
-              'product-types.grouped-product': { populate: ['tax_details'] },
-              'product-types.varient-product': { populate: [] },
-              'product-types.affiliate-product': { populate: [] },
+              'product-types.simple-product': { populate: ['tax_details', 'image_details', 'shipping_details'] },
+              'product-types.grouped-product': { populate: ['tax_details', 'image_details', 'shipping_details'] },
+              'product-types.varient-product': { populate: ['varients'] },
+              'product-types.affiliate-product': { populate: [] }, // Removed invalid affiliate_tracking_code, external_url
             },
           },
+          product_categories: true,
+          tag: true,
         },
       });
 
@@ -106,7 +167,7 @@ export default {
             };
           }
         }
-        return component; // Return unchanged for non-relevant components or if no update needed
+        return component; // Return unchanged for non-relevant components
       });
 
       // Only update if there are changes to avoid recursive triggers
@@ -124,7 +185,7 @@ export default {
           data: {
             product_type: updatedProductType,
           },
-        });
+        } as UpdateOptions);
         strapi.log.info(`afterCreate: Updated product with new product_type for documentId: ${result.documentId}`);
       } catch (updateErr) {
         strapi.log.error(`afterCreate: Failed to update product for id ${result.id}`, {
@@ -140,12 +201,14 @@ export default {
         populate: {
           product_type: {
             on: {
-              'product-types.simple-product': { populate: ['tax_details'] },
-              'product-types.grouped-product': { populate: ['tax_details'] },
-              'product-types.varient-product': { populate: [] },
+              'product-types.simple-product': { populate: ['tax_details', 'image_details', 'shipping_details'] },
+              'product-types.grouped-product': { populate: ['tax_details', 'image_details', 'shipping_details'] },
+              'product-types.varient-product': { populate: ['varients'] },
               'product-types.affiliate-product': { populate: [] },
             },
           },
+          product_categories: true,
+          tag: true,
         },
       });
       strapi.log.info(`afterCreate: Updated product: ${JSON.stringify(updatedProduct, null, 2)}`);
@@ -156,10 +219,11 @@ export default {
         result: JSON.stringify(event.result, null, 2),
         event: JSON.stringify(event, null, 2),
       });
+      throw err; // Rethrow to ensure error is logged in Strapi
     }
   },
 
-  async afterUpdate(event: any) {
+  async afterUpdate(event: { result: Product }) {
     try {
       const { result } = event;
       strapi.log.info(`afterUpdate: Processing product result: ${JSON.stringify(result, null, 2)}`);
@@ -176,12 +240,14 @@ export default {
         populate: {
           product_type: {
             on: {
-              'product-types.simple-product': { populate: ['tax_details'] },
-              'product-types.grouped-product': { populate: ['tax_details'] },
-              'product-types.varient-product': { populate: [] },
+              'product-types.simple-product': { populate: ['tax_details', 'image_details', 'shipping_details'] },
+              'product-types.grouped-product': { populate: ['tax_details', 'image_details', 'shipping_details'] },
+              'product-types.varient-product': { populate: ['varients'] },
               'product-types.affiliate-product': { populate: [] },
             },
           },
+          product_categories: true,
+          tag: true,
         },
       });
 
@@ -213,7 +279,7 @@ export default {
             };
           }
         }
-        return component; // Return unchanged for non-relevant components or if no update needed
+        return component; // Return unchanged for non-relevant components
       });
 
       // Only update if there are changes to avoid recursive triggers
@@ -231,7 +297,7 @@ export default {
           data: {
             product_type: updatedProductType,
           },
-        });
+        } as UpdateOptions);
         strapi.log.info(`afterUpdate: Updated product with new product_type for documentId: ${result.documentId}`);
       } catch (updateErr) {
         strapi.log.error(`afterUpdate: Failed to update product for id ${result.id}`, {
@@ -247,12 +313,14 @@ export default {
         populate: {
           product_type: {
             on: {
-              'product-types.simple-product': { populate: ['tax_details'] },
-              'product-types.grouped-product': { populate: ['tax_details'] },
-              'product-types.varient-product': { populate: [] },
+              'product-types.simple-product': { populate: ['tax_details', 'image_details', 'shipping_details'] },
+              'product-types.grouped-product': { populate: ['tax_details', 'image_details', 'shipping_details'] },
+              'product-types.varient-product': { populate: ['varients'] },
               'product-types.affiliate-product': { populate: [] },
             },
           },
+          product_categories: true,
+          tag: true,
         },
       });
       strapi.log.info(`afterUpdate: Updated product: ${JSON.stringify(updatedProduct, null, 2)}`);
@@ -263,6 +331,7 @@ export default {
         result: JSON.stringify(event.result, null, 2),
         event: JSON.stringify(event, null, 2),
       });
+      throw err; // Rethrow to ensure error is logged
     }
   },
 };
