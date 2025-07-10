@@ -385,7 +385,7 @@ export interface ApiCardDetailCardDetail extends Struct.CollectionTypeSchema {
   };
   attributes: {
     card_holder_name: Schema.Attribute.String;
-    card_number: Schema.Attribute.Integer;
+    card_number: Schema.Attribute.BigInteger;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1046,7 +1046,6 @@ export interface ApiWebNotificationWebNotification
       'api::web-notification.web-notification'
     > &
       Schema.Attribute.Private;
-    on_which_page: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     type: Schema.Attribute.Enumeration<
       ['info', 'warning', 'success', 'default']
@@ -1054,10 +1053,6 @@ export interface ApiWebNotificationWebNotification
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    users_permissions_user: Schema.Attribute.Relation<
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
   };
 }
 

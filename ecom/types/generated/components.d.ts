@@ -14,7 +14,7 @@ export interface AddressDeliveryAddress extends Struct.ComponentSchema {
     flat_address: Schema.Attribute.Text;
     full_name: Schema.Attribute.String;
     landmark: Schema.Attribute.Text;
-    mobile_number: Schema.Attribute.Integer;
+    mobile_number: Schema.Attribute.BigInteger;
     pincode: Schema.Attribute.Integer;
     state: Schema.Attribute.String;
   };
