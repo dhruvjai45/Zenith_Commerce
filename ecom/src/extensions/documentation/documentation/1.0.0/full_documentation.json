@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-07-11T04:28:04.800Z"
+    "x-generation-date": "2025-07-13T07:35:50.013Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -14736,11 +14736,12 @@
             "type": "number",
             "format": "float"
           },
-          "current_balance": {
-            "type": "string"
-          },
           "is_valid": {
             "type": "boolean"
+          },
+          "current_balance": {
+            "type": "number",
+            "format": "float"
           }
         }
       },
@@ -19379,6 +19380,14 @@
               "total_tax": {
                 "type": "integer"
               },
+              "order_status": {
+                "type": "string",
+                "enum": [
+                  "pending_payment",
+                  "confirmed",
+                  "cancelled"
+                ]
+              },
               "locale": {
                 "type": "string"
               },
@@ -20260,6 +20269,14 @@
           "total_tax": {
             "type": "integer"
           },
+          "order_status": {
+            "type": "string",
+            "enum": [
+              "pending_payment",
+              "confirmed",
+              "cancelled"
+            ]
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -20398,6 +20415,14 @@
                 },
                 "total_tax": {
                   "type": "integer"
+                },
+                "order_status": {
+                  "type": "string",
+                  "enum": [
+                    "pending_payment",
+                    "confirmed",
+                    "cancelled"
+                  ]
                 },
                 "createdAt": {
                   "type": "string",
@@ -21580,9 +21605,6 @@
                 "items": {
                   "anyOf": [
                     {
-                      "$ref": "#/components/schemas/OffersCouponOfferComponent"
-                    },
-                    {
                       "$ref": "#/components/schemas/OffersSpecialPriceComponent"
                     },
                     {
@@ -21593,7 +21615,6 @@
                 "discriminator": {
                   "propertyName": "__component",
                   "mapping": {
-                    "offers.coupon-offer": "#/components/schemas/OffersCouponOfferComponent",
                     "offers.special-price": "#/components/schemas/OffersSpecialPriceComponent",
                     "offers.product-bank-offer": "#/components/schemas/OffersProductBankOfferComponent"
                   }
@@ -22117,9 +22138,6 @@
             "items": {
               "anyOf": [
                 {
-                  "$ref": "#/components/schemas/OffersCouponOfferComponent"
-                },
-                {
                   "$ref": "#/components/schemas/OffersSpecialPriceComponent"
                 },
                 {
@@ -22130,7 +22148,6 @@
             "discriminator": {
               "propertyName": "__component",
               "mapping": {
-                "offers.coupon-offer": "#/components/schemas/OffersCouponOfferComponent",
                 "offers.special-price": "#/components/schemas/OffersSpecialPriceComponent",
                 "offers.product-bank-offer": "#/components/schemas/OffersProductBankOfferComponent"
               }
@@ -22200,9 +22217,6 @@
                   "items": {
                     "anyOf": [
                       {
-                        "$ref": "#/components/schemas/OffersCouponOfferComponent"
-                      },
-                      {
                         "$ref": "#/components/schemas/OffersSpecialPriceComponent"
                       },
                       {
@@ -22213,7 +22227,6 @@
                   "discriminator": {
                     "propertyName": "__component",
                     "mapping": {
-                      "offers.coupon-offer": "#/components/schemas/OffersCouponOfferComponent",
                       "offers.special-price": "#/components/schemas/OffersSpecialPriceComponent",
                       "offers.product-bank-offer": "#/components/schemas/OffersProductBankOfferComponent"
                     }
@@ -22283,111 +22296,6 @@
           },
           "meta": {
             "type": "object"
-          }
-        }
-      },
-      "OffersSpecialOfferComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "amount": {
-            "type": "number",
-            "format": "float"
-          },
-          "offer_description": {
-            "type": "string"
-          },
-          "maximum_off": {
-            "type": "number",
-            "format": "float"
-          },
-          "start_date": {
-            "type": "string",
-            "format": "date"
-          },
-          "expired_date": {
-            "type": "string",
-            "format": "date"
-          }
-        }
-      },
-      "OffersPartnerOfferComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "amount": {
-            "type": "number",
-            "format": "float"
-          },
-          "offer_description": {
-            "type": "string"
-          },
-          "maximum_off": {
-            "type": "number",
-            "format": "float"
-          },
-          "products": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "number"
-              },
-              "documentId": {
-                "type": "string"
-              }
-            }
-          },
-          "start_date": {
-            "type": "string",
-            "format": "date"
-          },
-          "expired_date": {
-            "type": "string",
-            "format": "date"
-          }
-        }
-      },
-      "OffersCouponOfferComponent": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "__component": {
-            "type": "string",
-            "enum": [
-              "offers.coupon-offer"
-            ]
-          },
-          "coupon_name": {
-            "type": "string"
-          },
-          "price_type": {
-            "type": "string",
-            "enum": [
-              "fixed_discount",
-              "percentage_discount"
-            ]
-          },
-          "offer_type": {
-            "type": "string",
-            "enum": [
-              "special_offer",
-              "partner_offer"
-            ]
-          },
-          "special_offer": {
-            "$ref": "#/components/schemas/OffersSpecialOfferComponent"
-          },
-          "partner_offer": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/OffersPartnerOfferComponent"
-            }
           }
         }
       },

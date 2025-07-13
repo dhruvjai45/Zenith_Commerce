@@ -16,13 +16,13 @@ export default ({ env }) => ({
         host: 'smtp.gmail.com',
         port: 587,
         auth: {
-          user: env('EMAIL_ADDRESS', 'dhruvjain.gdsc@gmail.com'),
+          user: env('EMAIL_ADDRESS'),
           pass: env('EMAIL_PASSWORD'),
         },
       },
       settings: {
-        defaultFrom: 'dhruvjain.gdsc@gmail.com',
-        defaultReplyTo: 'dhruvjain.gdsc@gmail.com',
+        defaultFrom: env('EMAIL_ADDRESS'),
+        defaultReplyTo: env('EMAIL_ADDRESS'),
       },
     },
   },

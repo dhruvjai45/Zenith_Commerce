@@ -19,7 +19,6 @@
     "type_of_offer": {
       "type": "dynamiczone",
       "components": [
-        "offers.coupon-offer",
         "offers.special-price",
         "offers.product-bank-offer"
       ]

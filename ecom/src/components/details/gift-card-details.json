@@ -14,11 +14,11 @@
     "initial_balance": {
       "type": "decimal"
     },
-    "current_balance": {
-      "type": "string"
-    },
     "is_valid": {
       "type": "boolean"
+    },
+    "current_balance":{
+      "type": "decimal"
     }
   },
   "config": {}

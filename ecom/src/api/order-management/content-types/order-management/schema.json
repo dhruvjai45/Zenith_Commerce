@@ -55,6 +55,15 @@
     },
     "total_tax": {
       "type": "integer"
+    },
+    "order_status": {
+      "type": "enumeration",
+      "default": "pending_payment",
+      "enum": [
+        "pending_payment",
+        "confirmed",
+        "cancelled"
+      ]
     }
   }
 }

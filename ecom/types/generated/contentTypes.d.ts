@@ -773,6 +773,10 @@ export interface ApiOrderManagementOrderManagement
       'oneToMany',
       'api::order-coupon.order-coupon'
     >;
+    order_status: Schema.Attribute.Enumeration<
+      ['pending_payment', 'confirmed', 'cancelled']
+    > &
+      Schema.Attribute.DefaultTo<'pending_payment'>;
     publishedAt: Schema.Attribute.DateTime;
     shipping_price: Schema.Attribute.Decimal;
     total_product_price: Schema.Attribute.Decimal;
@@ -850,11 +854,7 @@ export interface ApiProductOfferProductOffer
     products: Schema.Attribute.Relation<'oneToOne', 'api::product.product'>;
     publishedAt: Schema.Attribute.DateTime;
     type_of_offer: Schema.Attribute.DynamicZone<
-      [
-        'offers.coupon-offer',
-        'offers.special-price',
-        'offers.product-bank-offer',
-      ]
+      ['offers.special-price', 'offers.product-bank-offer']
     >;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

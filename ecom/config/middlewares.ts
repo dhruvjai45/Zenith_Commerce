@@ -1,5 +1,3 @@
-// In your Strapi project: config/middlewares.ts
-
 export default [
   'strapi::logger',
   'strapi::errors',
@@ -8,14 +6,11 @@ export default [
     config: {
       enabled: true,
       headers: '*',
-      // Ensure the origins array includes your Next.js app's URL
       origin: [
-        'http://localhost:1337', // Strapi admin
-        'http://localhost:9003', // Your Next.js app's local development URL
-        'http://127.0.0.1:9003', // Alternative for localhost
+        'http://localhost:1337',
         'http://localhost:3000',
-        'https://studio.web.app', // For Firebase Studio environment
-        'https://*.trycloudflare.com', // To allow requests from your public preview URL
+        'https://studio.web.app',
+        'https://*.trycloudflare.com',
       ],
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
       keepHeaderOnError: true,

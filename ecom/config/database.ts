@@ -7,11 +7,11 @@ export default ({ env }) => {
   const connections = {
     postgres: {
       connection: {
-        host: env('DATABASE_HOST', 'localhost'),
-        port: env.int('DATABASE_PORT', 5432),
-        database: env('DATABASE_NAME', 'summer_ecom'),
-        user: env('DATABASE_USERNAME', 'postgres'),
-        password: String(env('DATABASE_PASSWORD', 'Dhruv45')), // Explicitly cast to string
+        host: env('DATABASE_HOST'),
+        port: env.int('DATABASE_PORT'),
+        database: env('DATABASE_NAME'),
+        user: env('DATABASE_USERNAME'),
+        password: String(env('DATABASE_PASSWORD')), // Explicitly cast to string
         ssl: env.bool('DATABASE_SSL', false),
         schema: env('DATABASE_SCHEMA', 'public'),
       },

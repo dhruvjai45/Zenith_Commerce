@@ -94,7 +94,7 @@ export interface DetailsGiftCardDetails extends Struct.ComponentSchema {
   };
   attributes: {
     code: Schema.Attribute.String;
-    current_balance: Schema.Attribute.String;
+    current_balance: Schema.Attribute.Decimal;
     gift_card_name: Schema.Attribute.String;
     initial_balance: Schema.Attribute.Decimal;
     is_valid: Schema.Attribute.Boolean;
