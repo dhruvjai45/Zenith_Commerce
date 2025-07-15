@@ -175,6 +175,17 @@ export interface DetailsTags extends Struct.ComponentSchema {
   };
 }
 
+export interface DetailsVarientAttribute extends Struct.ComponentSchema {
+  collectionName: 'components_details_varient_attributes';
+  info: {
+    displayName: 'varient_attribute';
+  };
+  attributes: {
+    varient_attribute_name: Schema.Attribute.String;
+    varient_attribute_value: Schema.Attribute.String;
+  };
+}
+
 export interface OffersCouponOffer extends Struct.ComponentSchema {
   collectionName: 'components_offers_coupon_offers';
   info: {
@@ -331,6 +342,7 @@ declare module '@strapi/strapi' {
       'details.item-list': DetailsItemList;
       'details.shipping-details': DetailsShippingDetails;
       'details.tags': DetailsTags;
+      'details.varient-attribute': DetailsVarientAttribute;
       'offers.coupon-offer': OffersCouponOffer;
       'offers.partner-offer': OffersPartnerOffer;
       'offers.product-bank-offer': OffersProductBankOffer;

@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_details_varient_attributes",
+  "info": {
+    "displayName": "varient_attribute"
+  },
+  "options": {},
+  "attributes": {
+    "varient_attribute_name": {
+      "type": "string"
+    },
+    "varient_attribute_value": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

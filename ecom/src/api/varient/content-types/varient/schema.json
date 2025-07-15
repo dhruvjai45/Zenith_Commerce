@@ -43,6 +43,11 @@
     },
     "product_price": {
       "type": "decimal"
+    },
+    "varient_attribute": {
+      "type": "component",
+      "component": "details.varient-attribute",
+      "repeatable": true
     }
   }
 }

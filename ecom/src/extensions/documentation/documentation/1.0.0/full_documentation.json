@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-07-13T07:35:50.013Z"
+    "x-generation-date": "2025-07-15T04:55:25.675Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -12964,6 +12964,20 @@
           }
         }
       },
+      "DetailsVarientAttributeComponent": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "varient_attribute_name": {
+            "type": "string"
+          },
+          "varient_attribute_value": {
+            "type": "string"
+          }
+        }
+      },
       "DetailsTagsComponent": {
         "type": "object",
         "properties": {
@@ -13097,6 +13111,12 @@
                 "product_price": {
                   "type": "number",
                   "format": "float"
+                },
+                "varient_attribute": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DetailsVarientAttributeComponent"
+                  }
                 },
                 "createdAt": {
                   "type": "string",
@@ -24380,6 +24400,12 @@
                 "type": "number",
                 "format": "float"
               },
+              "varient_attribute": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DetailsVarientAttributeComponent"
+                }
+              },
               "locale": {
                 "type": "string"
               },
@@ -24477,6 +24503,12 @@
             "type": "number",
             "format": "float"
           },
+          "varient_attribute": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DetailsVarientAttributeComponent"
+            }
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -24556,6 +24588,12 @@
                 "product_price": {
                   "type": "number",
                   "format": "float"
+                },
+                "varient_attribute": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DetailsVarientAttributeComponent"
+                  }
                 },
                 "createdAt": {
                   "type": "string",

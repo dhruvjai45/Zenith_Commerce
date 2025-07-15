@@ -1019,6 +1019,10 @@ export interface ApiVarientVarient extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    varient_attribute: Schema.Attribute.Component<
+      'details.varient-attribute',
+      true
+    >;
     varient_description: Schema.Attribute.Text;
     varient_name: Schema.Attribute.String;
   };
