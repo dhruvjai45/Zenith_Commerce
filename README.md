@@ -1,10 +1,6 @@
 # 🛒 Zenith Commerce
 
 Welcome to **Zenith Commerce** – the robust backend foundation of a modern e-commerce platform built with **Strapi**. This repository powers a feature-rich shopping experience and seamlessly integrates with a **Next.js** frontend. It offers dynamic product management, secure user authentication, advanced order processing, and much more.
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/7abcf0bf-0a99-458f-b310-3672363f0581" alt="Recording 1" width="48%" />
-  <img src="https://github.com/user-attachments/assets/74a3e92e-b47c-4896-92ed-139d751132ba" alt="Recording 1" width="48%" />
-</p>
 
 ---
 
