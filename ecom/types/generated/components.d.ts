@@ -293,7 +293,6 @@ export interface ProductTypesGroupedProduct extends Struct.ComponentSchema {
       false
     >;
     tax_details: Schema.Attribute.Component<'details.billing-detail', false>;
-    total_tax: Schema.Attribute.Decimal;
   };
 }
 
@@ -310,7 +309,6 @@ export interface ProductTypesSimpleProduct extends Struct.ComponentSchema {
       false
     >;
     tax_details: Schema.Attribute.Component<'details.billing-detail', false>;
-    total_tax: Schema.Attribute.Decimal;
   };
 }
 

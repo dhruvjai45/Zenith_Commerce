@@ -38,9 +38,6 @@
       "component": "details.billing-detail",
       "repeatable": false
     },
-    "total_tax": {
-      "type": "decimal"
-    },
     "product_price": {
       "type": "decimal"
     },

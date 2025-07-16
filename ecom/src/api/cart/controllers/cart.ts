@@ -14,7 +14,6 @@ export default factories.createCoreController("api::cart.cart", {
 
     // Initialize totals
     let total_product_price = 0;
-    let total_tax = 0;
 
     // Process items (details.item-list component) if provided
     if (data.item && Array.isArray(data.item) && data.item.length > 0) {
@@ -144,15 +143,12 @@ export default factories.createCoreController("api::cart.cart", {
               }
 
               total_product_price += Math.round(adjustedPrice * quantity);
-              total_tax += (variant.total_tax || 0) * quantity;
-              strapi.log.debug(
-                `Added variant price: ${adjustedPrice * quantity}, tax: ${(variant.total_tax || 0) * quantity}`
-              );
+              strapi.log.debug(`Added variant price: ${adjustedPrice * quantity}`);
             } else {
               strapi.log.warn(`Variant with id or documentId ${item.varient} not found`);
             }
           } else if (product.product_type && product.product_type.length > 0) {
-            // Use product price/tax for non-variant items
+            // Use product price for non-variant items
             const productType = product.product_type[0];
             if (
               productType.__component === "product-types.simple-product" ||
@@ -206,10 +202,7 @@ export default factories.createCoreController("api::cart.cart", {
               }
 
               total_product_price += Math.round(adjustedPrice * quantity);
-              total_tax += (productType.total_tax || 0) * quantity;
-              strapi.log.debug(
-                `Added product price: ${adjustedPrice * quantity}, tax: ${(productType.total_tax || 0) * quantity}`
-              );
+              strapi.log.debug(`Added product price: ${adjustedPrice * quantity}`);
             } else {
               strapi.log.warn(`Invalid product type component: ${productType.__component}`);
             }
@@ -224,8 +217,7 @@ export default factories.createCoreController("api::cart.cart", {
 
     // Set totals (null if no items)
     data.total_product_price = data.item && data.item.length > 0 ? Math.round(total_product_price) : null;
-    data.total_tax = data.item && data.item.length > 0 ? total_tax : null;
-    strapi.log.debug(`Final totals - product_price: ${data.total_product_price}, tax: ${data.total_tax}`);
+    strapi.log.debug(`Final totals - product_price: ${data.total_product_price}`);
 
     // Create cart
     strapi.log.debug("Creating cart with final data:", JSON.stringify(data));
@@ -293,7 +285,6 @@ export default factories.createCoreController("api::cart.cart", {
 
     // Initialize totals
     let total_product_price = 0;
-    let total_tax = 0;
 
     // Process items (details.item-list component) if provided
     if (data.item && Array.isArray(data.item) && data.item.length > 0) {
@@ -423,15 +414,12 @@ export default factories.createCoreController("api::cart.cart", {
               }
 
               total_product_price += Math.round(adjustedPrice * quantity);
-              total_tax += (variant.total_tax || 0) * quantity;
-              strapi.log.debug(
-                `Added variant price: ${adjustedPrice * quantity}, tax: ${(variant.total_tax || 0) * quantity}`
-              );
+              strapi.log.debug(`Added variant price: ${adjustedPrice * quantity}`);
             } else {
               strapi.log.warn(`Variant with id or documentId ${item.varient} not found`);
             }
           } else if (product.product_type && product.product_type.length > 0) {
-            // Use product price/tax for non-variant items
+            // Use product price for non-variant items
             const productType = product.product_type[0];
             if (
               productType.__component === "product-types.simple-product" ||
@@ -485,10 +473,7 @@ export default factories.createCoreController("api::cart.cart", {
               }
 
               total_product_price += Math.round(adjustedPrice * quantity);
-              total_tax += (productType.total_tax || 0) * quantity;
-              strapi.log.debug(
-                `Added product price: ${adjustedPrice * quantity}, tax: ${(productType.total_tax || 0) * quantity}`
-              );
+              strapi.log.debug(`Added product price: ${adjustedPrice * quantity}`);
             } else {
               strapi.log.warn(`Invalid product type component: ${productType.__component}`);
             }
@@ -503,8 +488,7 @@ export default factories.createCoreController("api::cart.cart", {
 
     // Set totals (null if no items)
     data.total_product_price = data.item && data.item.length > 0 ? Math.round(total_product_price) : null;
-    data.total_tax = data.item && data.item.length > 0 ? total_tax : null;
-    strapi.log.debug(`Final totals - product_price: ${data.total_product_price}, tax: ${data.total_tax}`);
+    strapi.log.debug(`Final totals - product_price: ${data.total_product_price}`);
 
     // Update cart
     strapi.log.debug("Updating cart with final data:", JSON.stringify(data));

@@ -73,7 +73,6 @@ export default factories.createCoreController("api::order-management.order-manag
 
     // Initialize totals
     let total_product_price = 0;
-    let total_tax = 0;
     let total_to_pay = 0;
 
     // Track applied discounts for potential reversion
@@ -147,8 +146,7 @@ export default factories.createCoreController("api::order-management.order-manag
               strapi.log.debug("Cart API result (by documentId):", JSON.stringify(cart));
               if (cart) {
                 total_product_price += Math.round(cart.total_product_price || 0);
-                total_tax += cart.total_tax || 0;
-                strapi.log.debug(`Cart totals: product_price=${cart.total_product_price}, tax=${cart.total_tax}, id=${cart.id}`);
+                strapi.log.debug(`Cart totals: product_price=${cart.total_product_price}, id=${cart.id}`);
                 orderType.cart = cart.documentId;
               } else {
                 strapi.log.error(`No cart found with documentId: ${cartDocumentId}`);
@@ -253,10 +251,7 @@ export default factories.createCoreController("api::order-management.order-manag
                 }
 
                 total_product_price += Math.round(adjustedPrice * quantity);
-                total_tax += (productType.total_tax || 0) * quantity;
-                strapi.log.debug(
-                  `Added product price: ${adjustedPrice * quantity}, tax: ${(productType.total_tax || 0) * quantity}`
-                );
+                strapi.log.debug(`Added product price: ${adjustedPrice * quantity}`);
               } else {
                 strapi.log.warn(`Invalid product type component: ${productType.__component}`);
               }
@@ -357,10 +352,7 @@ export default factories.createCoreController("api::order-management.order-manag
               }
 
               total_product_price += Math.round(adjustedPrice * quantity);
-              total_tax += (variant.total_tax || 0) * quantity;
-              strapi.log.debug(
-                `Added variant price: ${adjustedPrice * quantity}, tax: ${(variant.total_tax || 0) * quantity}`
-              );
+              strapi.log.debug(`Added variant price: ${adjustedPrice * quantity}`);
             } else {
               strapi.log.warn(`Variant with id or documentId ${orderType.varient} not found`);
             }
@@ -371,8 +363,7 @@ export default factories.createCoreController("api::order-management.order-manag
 
     // Set totals
     data.total_product_price = Math.round(total_product_price);
-    data.total_tax = total_tax;
-    total_to_pay = total_product_price + total_tax;
+    total_to_pay = total_product_price;
 
     // Normalize order_coupons to an array
     if (data.order_coupons && !Array.isArray(data.order_coupons)) {
@@ -545,7 +536,7 @@ export default factories.createCoreController("api::order-management.order-manag
     data.applied_gift_card_discount = appliedGiftCardDiscount;
     data.gift_card_document_id = giftCardDocumentId;
 
-    strapi.log.debug(`Final totals - product_price: ${total_product_price}, tax: ${total_tax}, total_to_pay: ${data.total_to_pay}`);
+    strapi.log.debug(`Final totals - product_price: ${total_product_price}, total_to_pay: ${data.total_to_pay}`);
 
     // Create order
     strapi.log.debug("Creating order with final data:", JSON.stringify(data));
@@ -673,7 +664,6 @@ export default factories.createCoreController("api::order-management.order-manag
 
     // Initialize totals
     let total_product_price = 0;
-    let total_tax = 0;
     let total_to_pay = 0;
 
     // Track applied discounts for potential reversion
@@ -806,8 +796,7 @@ export default factories.createCoreController("api::order-management.order-manag
               strapi.log.debug("Cart API result (by documentId):", JSON.stringify(cart));
               if (cart) {
                 total_product_price += Math.round(cart.total_product_price || 0);
-                total_tax += cart.total_tax || 0;
-                strapi.log.debug(`Cart totals: product_price=${cart.total_product_price}, tax=${cart.total_tax}, id=${cart.id}`);
+                strapi.log.debug(`Cart totals: product_price=${cart.total_product_price}, id=${cart.id}`);
                 orderType.cart = cart.documentId;
               } else {
                 strapi.log.error(`No cart found with documentId: ${cartDocumentId}`);
@@ -912,10 +901,7 @@ export default factories.createCoreController("api::order-management.order-manag
                 }
 
                 total_product_price += Math.round(adjustedPrice * quantity);
-                total_tax += (productType.total_tax || 0) * quantity;
-                strapi.log.debug(
-                  `Added product price: ${adjustedPrice * quantity}, tax: ${(productType.total_tax || 0) * quantity}`
-                );
+                strapi.log.debug(`Added product price: ${adjustedPrice * quantity}`);
               } else {
                 strapi.log.warn(`Invalid product type component: ${productType.__component}`);
               }
@@ -1016,10 +1002,7 @@ export default factories.createCoreController("api::order-management.order-manag
               }
 
               total_product_price += Math.round(adjustedPrice * quantity);
-              total_tax += (variant.total_tax || 0) * quantity;
-              strapi.log.debug(
-                `Added variant price: ${adjustedPrice * quantity}, tax: ${(variant.total_tax || 0) * quantity}`
-              );
+              strapi.log.debug(`Added variant price: ${adjustedPrice * quantity}`);
             } else {
               strapi.log.warn(`Variant with id or documentId ${orderType.varient} not found`);
             }
@@ -1030,8 +1013,7 @@ export default factories.createCoreController("api::order-management.order-manag
 
     // Set totals
     data.total_product_price = Math.round(total_product_price);
-    data.total_tax = total_tax;
-    total_to_pay = total_product_price + total_tax;
+    total_to_pay = total_product_price;
 
     // Normalize order_coupons to an array
     if (data.order_coupons && !Array.isArray(data.order_coupons)) {
@@ -1204,7 +1186,7 @@ export default factories.createCoreController("api::order-management.order-manag
     data.applied_gift_card_discount = appliedGiftCardDiscount;
     data.gift_card_document_id = giftCardDocumentId;
 
-    strapi.log.debug(`Final totals - product_price: ${total_product_price}, tax: ${total_tax}, total_to_pay: ${data.total_to_pay}`);
+    strapi.log.debug(`Final totals - product_price: ${total_product_price}, total_to_pay: ${data.total_to_pay}`);
 
     // Update order
     strapi.log.debug("Updating order with final data:", JSON.stringify(data));

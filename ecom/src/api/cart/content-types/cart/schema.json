@@ -19,9 +19,6 @@
     "total_product_price": {
       "type": "decimal"
     },
-    "total_tax": {
-      "type": "integer"
-    },
     "item": {
       "type": "component",
       "component": "details.item-list",

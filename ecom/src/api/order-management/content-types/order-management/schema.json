@@ -53,9 +53,6 @@
       "relation": "oneToOne",
       "target": "api::user-address.user-address"
     },
-    "total_tax": {
-      "type": "integer"
-    },
     "order_status": {
       "type": "enumeration",
       "default": "pending_payment",

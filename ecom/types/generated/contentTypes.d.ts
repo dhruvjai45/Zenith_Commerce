@@ -428,7 +428,6 @@ export interface ApiCartCart extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     total_product_price: Schema.Attribute.Decimal;
-    total_tax: Schema.Attribute.Integer;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -780,7 +779,6 @@ export interface ApiOrderManagementOrderManagement
     publishedAt: Schema.Attribute.DateTime;
     shipping_price: Schema.Attribute.Decimal;
     total_product_price: Schema.Attribute.Decimal;
-    total_tax: Schema.Attribute.Integer;
     total_to_pay: Schema.Attribute.Decimal;
     type_of_order: Schema.Attribute.DynamicZone<
       ['details.item-list', 'cart-order.cart-order']
@@ -1015,7 +1013,6 @@ export interface ApiVarientVarient extends Struct.CollectionTypeSchema {
     >;
     slug: Schema.Attribute.String;
     tax_details: Schema.Attribute.Component<'details.billing-detail', false>;
-    total_tax: Schema.Attribute.Decimal;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

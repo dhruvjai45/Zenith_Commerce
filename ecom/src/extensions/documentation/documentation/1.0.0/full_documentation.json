@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-07-15T04:55:25.675Z"
+    "x-generation-date": "2025-07-16T05:54:00.298Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -11880,9 +11880,6 @@
                 "type": "number",
                 "format": "float"
               },
-              "total_tax": {
-                "type": "integer"
-              },
               "item": {
                 "type": "array",
                 "items": {
@@ -12458,9 +12455,6 @@
             "type": "number",
             "format": "float"
           },
-          "total_tax": {
-            "type": "integer"
-          },
           "item": {
             "type": "array",
             "items": {
@@ -12529,9 +12523,6 @@
                 "total_product_price": {
                   "type": "number",
                   "format": "float"
-                },
-                "total_tax": {
-                  "type": "integer"
                 },
                 "item": {
                   "type": "array",
@@ -13013,10 +13004,6 @@
           "product_price": {
             "type": "number",
             "format": "float"
-          },
-          "total_tax": {
-            "type": "number",
-            "format": "float"
           }
         }
       },
@@ -13103,10 +13090,6 @@
                 },
                 "tax_details": {
                   "$ref": "#/components/schemas/DetailsBillingDetailComponent"
-                },
-                "total_tax": {
-                  "type": "number",
-                  "format": "float"
                 },
                 "product_price": {
                   "type": "number",
@@ -13199,10 +13182,6 @@
             "$ref": "#/components/schemas/DetailsBillingDetailComponent"
           },
           "product_price": {
-            "type": "number",
-            "format": "float"
-          },
-          "total_tax": {
             "type": "number",
             "format": "float"
           }
@@ -19397,9 +19376,6 @@
                 ],
                 "example": "string or id"
               },
-              "total_tax": {
-                "type": "integer"
-              },
               "order_status": {
                 "type": "string",
                 "enum": [
@@ -20286,9 +20262,6 @@
               }
             }
           },
-          "total_tax": {
-            "type": "integer"
-          },
           "order_status": {
             "type": "string",
             "enum": [
@@ -20432,9 +20405,6 @@
                       "type": "string"
                     }
                   }
-                },
-                "total_tax": {
-                  "type": "integer"
                 },
                 "order_status": {
                   "type": "string",
@@ -24392,10 +24362,6 @@
               "tax_details": {
                 "$ref": "#/components/schemas/DetailsBillingDetailComponent"
               },
-              "total_tax": {
-                "type": "number",
-                "format": "float"
-              },
               "product_price": {
                 "type": "number",
                 "format": "float"
@@ -24495,10 +24461,6 @@
           "tax_details": {
             "$ref": "#/components/schemas/DetailsBillingDetailComponent"
           },
-          "total_tax": {
-            "type": "number",
-            "format": "float"
-          },
           "product_price": {
             "type": "number",
             "format": "float"
@@ -24580,10 +24542,6 @@
                 },
                 "tax_details": {
                   "$ref": "#/components/schemas/DetailsBillingDetailComponent"
-                },
-                "total_tax": {
-                  "type": "number",
-                  "format": "float"
                 },
                 "product_price": {
                   "type": "number",
