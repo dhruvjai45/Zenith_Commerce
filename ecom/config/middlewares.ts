@@ -11,7 +11,6 @@ export default [
         'https://*.trycloudflare.com',
         'https://zenith-commerce.onrender.com',
       ],
-      headers: '*',
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
       keepHeaderOnError: true,
     },
