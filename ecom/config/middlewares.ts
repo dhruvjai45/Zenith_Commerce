@@ -4,14 +4,14 @@ export default [
   {
     name: 'strapi::cors',
     config: {
-      enabled: true,
-      headers: '*',
       origin: [
         'http://localhost:1337',
         'http://localhost:3000',
         'https://studio.web.app',
         'https://*.trycloudflare.com',
+        'https://zenith-commerce.onrender.com',
       ],
+      headers: '*',
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
       keepHeaderOnError: true,
     },
