@@ -1,11 +1,11 @@
 // config/server.ts
 
 module.exports = ({ env }) => ({
-  host: env('HOST', '0.0.0.0'),
-  port: env.int('PORT', 1337),
-  url: env('PUBLIC_URL', 'https://zenith-commerce.onrender.com'), // Public URL for Render deployment
+  host: '0.0.0.0',
+  port: env.int('PORT', 10000), // Render default port
+  url: env('RENDER_EXTERNAL_URL', 'https://zenith-commerce.onrender.com'),
   app: {
-    keys: env.array('APP_KEYS'), // Replace with your secure keys
+    keys: env.array('APP_KEYS'),
   },
   webhooks: {
     populateRelations: false,
