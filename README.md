@@ -131,11 +131,11 @@ Welcome to **Zenith Commerce** – the robust backend foundation of a modern e-c
 ---
 
 ## 🌐 Live Deployment
-- **Backend** Hosted on Render at [https://zenith-commerce.onrender.com](https://zenith-commerce.onrender.com)
-- **Frontend**Live on Vercel at [https://zayvue-commerce.vercel.app/](https://zayvue-commerce.vercel.app/)
-- **Database** Hosted on Render
-- **Media Assets** Stored and managed via Cloudinary
-- To access the Strapi dashboard, please email zayvuecommerce@gmail.com for an invite to [https://zenith-commerce.onrender.com/](https://zenith-commerce.onrender.com/).
+- **Backend:** Hosted on Render at [https://zenith-commerce.onrender.com](https://zenith-commerce.onrender.com)
+- **Frontend:** Live on Vercel at [https://zayvue-commerce.vercel.app/](https://zayvue-commerce.vercel.app/)
+- **Database:** Hosted on Render
+- **Media Assets:** Stored and managed via Cloudinary
+To access the Strapi dashboard, please email zayvuecommerce@gmail.com for an invite to [https://zenith-commerce.onrender.com/](https://zenith-commerce.onrender.com/).
 
 ---
 
