@@ -1,13 +1,27 @@
 export default ({ env }) => ({
+  // Cloudinary Upload Provider
+  upload: {
+    config: {
+      provider: '@strapi/provider-upload-cloudinary',
+      providerOptions: {
+        cloud_name: env('CLOUDINARY_NAME'),
+        api_key: env('CLOUDINARY_KEY'),
+        api_secret: env('CLOUDINARY_SECRET'),
+      },
+    },
+  },
+
   'users-permissions': {
     enabled: true,
     config: {
       jwtSecret: env('JWT_SECRET'),
     },
   },
+
   documentation: {
     enabled: true,
   },
+
   email: {
     enabled: true,
     config: {
