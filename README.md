@@ -59,12 +59,22 @@ Welcome to **Zenith Commerce** – the robust backend foundation of a modern e-c
 
 ## 🛠️ Tech Stack
 
-| Layer      | Technology     |
-|------------|----------------|
-| Backend CMS | [Strapi](https://strapi.io) |
-| Database    | SQLite (default), PostgreSQL/MySQL configurable |
-| API         | REST (custom controllers & lifecycles) |
-| Email       | Built-in service integration |
+| Layer         | Technology     |
+|---------------|----------------|
+| Backend CMS   | Strapi |
+| Database      | SQLite (default), PostgreSQL/MySQL configurable |
+| API           | REST (custom controllers & lifecycles) |
+| Email         | Built-in service integration |
+| Media Storage | Cloudinary |
+
+---
+
+## 🌐 Live Deployment
+- **Backend** Hosted on Render at [https://zenith-commerce.onrender.com](https://zenith-commerce.onrender.com)
+- **Frontend**Live on Vercel at [https://zayvue-commerce.vercel.app/](https://zayvue-commerce.vercel.app/)
+- **Database** Hosted on Render
+- **Media Assets** Stored and managed via Cloudinary
+- To access the Strapi dashboard, please email zayvuecommerce@gmail.com for an invite to [https://zenith-commerce.onrender.com/](https://zenith-commerce.onrender.com/).
 
 ---
 
@@ -148,9 +158,11 @@ Zenith Commerce uses modular collection types and components:
 -  Store all secrets in the .env file – never commit this file.
 -  Use HTTPS in production via a reverse proxy like Nginx.
 -  Keep all dependencies updated for security patches.
+-  Secure Cloudinary credentials and restrict API access.
 
 ### 🙏 Acknowledgements
 -  Powered by Strapi – Open-source headless CMS
+-  Media management by Cloudinary
 -  Inspired by leading e-commerce practices and open-source communities
 
 ### 📧 Contact
