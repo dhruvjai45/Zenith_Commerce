@@ -1,6 +1,21 @@
-export default [
-  'strapi::logger',
+// config/middlewares.js
+
+module.exports = [
   'strapi::errors',
+  {
+    name: 'strapi::security',
+    config: {
+      contentSecurityPolicy: {
+        useDefaults: true,
+        directives: {
+          'connect-src': ["'self'", 'https://*.strapi.io', 'http:', 'https:'],
+          'img-src': ["'self'", 'data:', 'blob:', 'res.cloudinary.com', 'market-assets.strapi.io', 'zenith-commerce.onrender.com'],
+          'media-src': ["'self'", 'data:', 'blob:', 'res.cloudinary.com', 'market-assets.strapi.io', 'zenith-commerce.onrender.com'],
+          upgradeInsecureRequests: null,
+        },
+      },
+    },
+  },
   {
     name: 'strapi::cors',
     config: {
@@ -10,13 +25,15 @@ export default [
         'https://studio.web.app',
         'https://*.trycloudflare.com',
         'https://zenith-commerce.onrender.com',
+        'https://zayvue-commerce.vercel.app',
       ],
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
+      headers: ['Content-Type', 'Authorization', 'Origin', 'Accept'],
       keepHeaderOnError: true,
     },
   },
-  'strapi::security',
   'strapi::poweredBy',
+  'strapi::logger',
   'strapi::query',
   'strapi::body',
   'strapi::session',
