@@ -1,4 +1,3 @@
-// config/middlewares.js
 
 module.exports = [
   'strapi::errors',
@@ -8,7 +7,7 @@ module.exports = [
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          'connect-src': ["'self'", 'https://*.strapi.io', 'http:', 'https:'],
+          'connect-src': ["'self'", 'https:', 'http:'],
           'img-src': ["'self'", 'data:', 'blob:', 'res.cloudinary.com', 'market-assets.strapi.io', 'zenith-commerce.onrender.com'],
           'media-src': ["'self'", 'data:', 'blob:', 'res.cloudinary.com', 'market-assets.strapi.io', 'zenith-commerce.onrender.com'],
           upgradeInsecureRequests: null,
